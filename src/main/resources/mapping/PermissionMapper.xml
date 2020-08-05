@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.access.dao.IPermissionDao">
+
+    <resultMap id="BaseResultMap" type="com.access.entity.PermissionEntity">
+        <result column="permissionId" jdbcType="VARCHAR" property="permissionId" />
+        <result column="permissionName" jdbcType="VARCHAR" property="permissionName" />
+        <result column="accessCode" jdbcType="VARCHAR" property="accessCode" />
+        <result column="AccessDesc" jdbcType="VARCHAR" property="AccessDesc" />
+    </resultMap>
+
+    <select id="findPermissionByRole" resultType="com.access.entity.PermissionEntity" parameterType="java.lang.String">
+        SELECT *from  T_permission
+--         SELECT *FROM T_permission p WHERE p.PermissionId IN (SELECT r.permissionid FROM T_role_permission r WHERE r.RoleId = #{roleid,jdbcType=VARCHAR})
+    </select>
+
+    <select id="findAllPermission" resultType="com.access.entity.PermissionEntity">
+        SELECT *from  T_permission
+    </select>
+
+</mapper>
